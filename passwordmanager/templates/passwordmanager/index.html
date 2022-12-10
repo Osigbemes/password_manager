@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Efficiently managing your security password">
+    <link rel=" stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/index.js' %}" defer></script>
+    <title>Password Manager</title>
+</head>
+
+<body class="font-body w-full px-4 sm:max-w-md sm:mx-auto min-h-screen bg-blue-300 text-gray-700">
+    <header class="flex items-center justify-between my-8">
+        <h1 class="text-4xl font-semibold cursor-pointer transition ease-linear duration-200 transform hover:scale-110">
+            My Pass</h1>
+        <svg class="w-9 h-9 text-gray-700 hover:text-green-600 cursor-pointer transform hover:scale-110 transition ease-linear duration-200"
+            fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+            </path>
+        </svg>
+    </header>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-dismissible alert-success">
+      <button type="button" class="close" data-dismiss="alert">
+      ×
+      </button>
+      <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <main>
+        <form action="find_password" id="form" method="post" class="flex flex-col flex-nowrap items-start justify-center">
+            {%csrf_token%}
+            <label for="website" class="label">website</label>
+            <input class="input border-blue-300" type="url" id="website" name="website" placeholder="twitter">
+            <button class="btn" id="search" type="submit">Search</button>
+            <label for="email" class="label">Email</label>
+            <input type="email" id="email" class="input border-blue-300" name="email" placeholder="example@email.com" >
+            <label for="password" class="label">Password</label>
+            <input type="password" class="input border-blue-300" id="password" name="password" minlength="8" value={{password}}>
+            <div class="sm:flex sm:justify-center sm:items-center">
+                <button type="submit" id="generate" class="btn" formaction="/generate_password">Generate Password</button>
+                <button class="btn mt-2 sm:mt-0 sm:ml-3" id="add" type="submit" formaction="/">Add</button>
+            </div>
+
+        </form>
+    </main>
+</body>
+
+</html>
