@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 CSRF_TRUSTED_ORIGINS = [
-    'https://Password'
+    'https://passwordmanager-production-8bf8.up.railway.app'
 ]
 
 # Application definition
