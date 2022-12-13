@@ -1,7 +1,7 @@
 from django.shortcuts import render
 import json
-from tkinter import *
-from tkinter import messagebox
+# from tkinter import *
+# from tkinter import messagebox
 import random
 from django.contrib import messages
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
