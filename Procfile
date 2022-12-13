@@ -1,1 +1,1 @@
-web: gunicorn 'passwordmanager.wsgi'
+web: gunicorn 'Password.wsgi'
